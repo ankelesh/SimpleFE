@@ -1,0 +1,1 @@
+{"critical_points":"[(3, 3), (4, 4)]","part_name":"test_part","polygon_points":"[(0, 0), (0, 30), (30, 0)]","sprite_path":"res://assets/sprites/bodyparts/bodypart_test.png"}

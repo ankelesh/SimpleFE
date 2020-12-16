@@ -1,0 +1,49 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "EditorProperty",
+"class": "BPREditor",
+"language": "GDScript",
+"path": "res://addons/BodyPartResourceEditor/BPREditorProperty.gd"
+}, {
+"base": "Resource",
+"class": "BodyPartResource",
+"language": "GDScript",
+"path": "res://resources/BodyPartResource.gd"
+}, {
+"base": "Node",
+"class": "ObjectLayer",
+"language": "GDScript",
+"path": "res://Scenes/ObjectLayers/scripts/ObjectLayer.gd"
+} ]
+_global_script_class_icons={
+"BPREditor": "",
+"BodyPartResource": "",
+"ObjectLayer": ""
+}
+
+[application]
+
+config/name="SimpleFightExample"
+run/main_scene="res://Scenes/BodyParts/BodyPart.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+ScreenParameters="*res://Globals/ScreenParameters.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "BodyPartResourceEditor" )
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

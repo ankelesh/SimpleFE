@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/BodyParts/BodyPart.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/BodyPartResource.gd" type="Script" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+export(Resource) var bodypart_parameters
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_scape_parameters(bodypart_parameters)
+	var mod = Vector2(2,2)
+	adapt_size(mod)
+	position = Vector2(300,300)
+	$TopLayer.relocate(position)
+	$MiddleLayer.relocate(position)
+	$BottomLayer.relocate(position)
+	pass # Replace with function body.
+
+
+
+func set_scape_parameters(params : BodyPartResource) -> void:
+	$Sprite.texture = ImageTexture.new()
+	$Sprite.texture.load(params.sprite_path)
+	$TopLayer.set_form(params.polygon_points)
+	$MiddleLayer.set_form(params.polygon_points)
+	$BottomLayer.set_form(params.polygon_points)
+	update()
+
+func adapt_size(modifier : Vector2) -> void:
+	transform = transform.scaled(modifier)
+	$TopLayer.transform(modifier)
+	$MiddleLayer.transform(modifier)
+	$BottomLayer.transform(modifier)
+	update()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 2 )
+sprite_path = "res://assets/sprites/bodyparts/human_01/ch.png"
+polygon_points = PoolVector2Array(  )
+critical_points = PoolVector2Array(  )
+critical_polygons = [  ]
+part_name = ""
+
+[node name="HumanTors" instance=ExtResource( 1 )]
+script = SubResource( 1 )
+bodypart_parameters = SubResource( 2 )
